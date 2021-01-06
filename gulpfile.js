@@ -32,7 +32,7 @@ gulp.task('css', () => {
     })
     // js task
 gulp.task('js', () => {
-    return gulp.src(['project/js/jquery.js', 'project/js/lange.js', 'project/js/scrollout.js', 'project/js/animation.js', 'project/js/index.js'])
+    return gulp.src(['project/js/jquery.js', 'project/js/lange.js', 'project/js/scrollout.js', 'project/js/animation.js', 'project/js/store.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/js'))
 })

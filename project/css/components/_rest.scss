@@ -13,6 +13,7 @@
             .page-content {
                 width: calc(100% - 220px);
                 float: right;
+                overflow-x: hidden;
             }
             
             @include mobile {
