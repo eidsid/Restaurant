@@ -1,0 +1,89 @@
+$center:0 auto;
+$mobile_width:750px;
+@mixin Stransation($value) {
+    transition: all $value ease-in-out;
+}
+
+@mixin button {
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+@mixin perfictbutton {
+    cursor: pointer;
+    @include Stransation(0.4s);
+    color: honeydew;
+    font-size: 2rem;
+    position: relative;
+    padding: 7px;
+    max-width: 120px;
+    margin: $center;
+    margin-top: 20px;
+    overflow: hidden;
+    span {
+        @include Stransation(0.5s);
+        position: absolute;
+        background-color: rgb(6, 189, 250);
+        &:nth-child(1) {
+            width: 100%;
+            height: 3px;
+            top: 0;
+            left: 100%;
+            transition-delay: 0.1s;
+        }
+        &:nth-child(4) {
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            left: 100%;
+            transition-delay: 0.1s;
+        }
+        &:nth-child(2) {
+            bottom: -100%;
+            height: 100%;
+            width: 3px;
+            right: 0;
+            transition-delay: 0.3s;
+        }
+        &:nth-child(3) {
+            bottom: 100%;
+            height: 100%;
+            width: 3px;
+            left: 0;
+            transition-delay: 0.4s;
+        }
+    }
+    &:hover {
+        span {
+            &:nth-child(1) {
+                left: 0;
+            }
+            &:nth-child(4) {
+                left: 0;
+            }
+            &:nth-child(2) {
+                bottom: 0;
+            }
+            &:nth-child(3) {
+                bottom: 0;
+            }
+        }
+        transition-delay:1s;
+        background-color: rgb(6, 189, 250);
+        box-shadow: 0px 0px 20px 10px rgb(89, 193, 228);
+        color: rgb(4, 53, 70);
+    }
+}
+
+@mixin pc() {
+    @media (min-width: $mobile_width) {
+        @content
+    }
+}
+
+$nav-width: 200px;
+@mixin mobile() {
+    @media (max-width: $mobile_width) {
+        @content
+    }
+}

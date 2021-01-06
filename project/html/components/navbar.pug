@@ -1,0 +1,28 @@
+.nave-toggle
+   h4.language AR  
+   i.toggle-button.fa.fa-bars
+.nav-bar     
+
+  ul 
+
+     li: h3:  a(href="#").navbrand  Resturant
+     if page_title==='storePage'
+       h4: i.fa.fa-arrow-left: a(href="./index.html" class="home" ) Home
+     li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="menus") Menu
+     li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="aboutus") About us
+     li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="gallery") Gallery
+     li( class= page_title==='storePage' ? 'hide' : ''): a.store(href="./store.html") Order Online 
+     li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="contact") Contact
+     h3.language AR  
+  ul.row.socail
+      li.col: i.fa.fa-facebook
+      li.col: i.fa.fa-instagram
+  p.adress Cairo, 23 Mohamed Ali Street
+  li.phone(href="") +2011111111
+  .order 
+    span
+    span
+    span
+    span
+    h4: a.home(href="./cart.html") Cart
+    

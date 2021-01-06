@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+-var page_title="storePage"
+html(lang="en")
+       head
+              meta(charset="UTF-8")
+              meta(name="viewport", content="width=device-width, initial-scale=1.0")
+              title #{page_title}
+              include ./components/links
+
+       body               
+           include ./components/navbar
+           .page-content.container
+              include ./pages_content/store_page
+       include ./components/scripts
+       

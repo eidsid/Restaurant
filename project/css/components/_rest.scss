@@ -1,0 +1,22 @@
+            body {
+                background-color: rgb(220, 220, 220) !important;
+                overflow-x: hidden;
+            }
+            
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            
+            .page-content {
+                width: calc(100% - 220px);
+                float: right;
+            }
+            
+            @include mobile {
+                .page-content {
+                    width: 100%;
+                }
+            }

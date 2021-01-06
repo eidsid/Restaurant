@@ -1,0 +1,132 @@
+#carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride='carousel')
+  ol.carousel-indicators
+    li.active(data-bs-target='#carouselExampleDark' data-bs-slide-to='0')
+    li(data-bs-target='#carouselExampleDark' data-bs-slide-to='1')
+    li(data-bs-target='#carouselExampleDark' data-bs-slide-to='2')
+  .carousel-inner
+    .carousel-item.active(data-bs-interval='5000')
+      img.d-block.w-100(src='../assts/images/1.jpg' alt='resturant image')
+      .info
+       .content
+        h5 WE ARE NOW OPEN
+        p we are open Tuseday to Saturday from 11.30 am to 9 pm
+
+    .carousel-item(data-bs-interval='9000')
+      img.d-block.w-100(src='../assts/images/2.jpg' alt='resturant image')
+      .info
+          .content
+                  h5 FOLLOW US
+                  p FOLLOW US ON SOCIAL NETWORKS
+    .carousel-item(data-bs-interval='11000')
+      img.d-block.w-100(src='../assts/images/3.jpg' alt='resturant image')
+      .info
+       .content
+        h5 DISCOVER
+        p COME DISCOVER OUR NEW OFFERS
+
+  a.carousel-control-prev(href='#carouselExampleDark' role='button' data-bs-slide='prev')
+    span.carousel-control-prev-icon(aria-hidden='true')
+    span.visually-hidden 
+  a.carousel-control-next(href='#carouselExampleDark' role='button' data-bs-slide='next')
+    span.carousel-control-next-icon(aria-hidden='true')
+    span.visually-hidden 
+
+
+#menus.container
+   h1 Take-out Menu 
+   h4 Appetizers
+   .row.appertizers
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 GOAT SALAD 
+           span $10.00
+         p Watercress , aragula salad, pickled red cabbage, parmesan crumble, walnuts and fresh goat cheese
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 CHICKEN FRIED NUGGETS 
+           span $12.00
+         p Spicy mayo and thyme infused honey sauce
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 DEMI-GLACE CHICKEN POUTINE
+           span $12.00
+         p Fries, cheese curds, minced chicken, chicken demi-glace in white wine
+   h3 MAINS
+   .container
+   .row.main-menus
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 GOAT SALAD
+           span $20.00
+         p Watercress , aragula salad, pickled red cabbage, parmesan crumble, walnuts and fresh goat cheese
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 CHICKEN FRIED NUGGETS 
+           span $12.00
+         p Spicy mayo and thyme infused honey sauce
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 DEMI-GLACE CHICKEN POUTINE
+           span $12.00
+         p Fries, cheese curds, minced chicken, chicken demi-glace in white wine
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 CHICKEN POUTINE HALF GLASS
+           span $10.00
+         p Watercress , aragula salad, pickled red cabbage, parmesan crumble, walnuts and fresh goat cheese
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 MAC ‘N’ CHEESE
+           span $32.00
+         p San Marzano tomatoes, buffalo mozzarella, basil, garlic and olive oil
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 BEEF BURGER
+           span $19.00
+         p Watercress , aragula salad, pickled red cabbage, parmesan crumble, walnuts and fresh goat cheese
+      .col-lg-3.col-md-5.col-sm-12.plate
+         h6 MUSSLES AND FRIES
+           span $19.00
+         p Marinière : onions, wine, parsley | Blue cheese : onions, wine, parsley, cream et blue cheese | Poulette : onions, wine, parsley, cream, button mushroom and egg yolk | Marinara : onions, wine, parsley, San Marzano tomatoes and basil
+#aboutus
+ img()
+ p Whether you’re in the mood for a ‘small’ poutine or a ‘big’ salad, ‘just one’ beer or a double shot espresso, when it satisfies your tastebuds, it’s all good.
+  |Inspired by local flavours and Montrealers’ favourite dishes,  cooks serve up comforting and seasonal dishes that evoke and create the best memories
+#gallery
+ .container
+   .row
+      .col-lg-6.col-md-6.col-sm-6
+       .img_container.left
+        img(src="../assts/images/build.jpg", alt="")
+        h5.text see our gallery it seem quit good ,
+        p.text Just like its surroundings,  has a French soul, but also the warmth of a British pub and the vibrancy of Brooklyn.Truly and uniquely a part of Montreal.
+         |Like that restaurant on McGill? welcoming space where everyone would feel at home.
+
+      .col-lg-6.col-md-6.col-sm-6
+       .img_container.right
+        img(src="../assts/images/1.jpg", alt="")
+
+      .col-lg-6.col-md-6.col-sm-6
+       .img_container.left
+        img(src="../assts/images/2.jpg", alt="")
+
+      .col-lg-6.col-md-6.col-sm-6
+       .img_container.right
+        img(src="../assts/images/3.jpg", alt="")
+      .col-lg-6.col-md-6.col-sm-6
+       .img_container.right
+        img(src="../assts/images/about/1.jpg", alt="")
+#contact.row
+ .content.col-6.col-xsm-12
+  h4 FIND US
+  h6 Corniche El Nile, Qism Beni Suef, Beni Suef, Beni Suef Governorate
+  button.btn: a(href="https://g.page/evento-rest?share" target="_blank") OPEN IN GOOGLE MAP
+  hr
+  h4 OPENING HOURS
+  .container
+  .row 
+   .col-6
+    p Monday to Friday
+   .col-6
+    p 11:30 AM to 3:00 PM
+  hr
+  h4 RESERVATIONS
+  p For more information info@resturant.com
+ iframe.map.col-6.col-xsm-12( src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d128014.37516234764!2d31.177452141796884!3d29.06614790000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145a27d31678a25d%3A0x3d85b315730dc55b!2sevento%20Rest!5e1!3m2!1sar!2seg!4v1609836787142!5m2!1sar!2seg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0")
+
+.btn.top: i.fa.fa-arrow-up
+p.copy copyright &copy 2021 All right reserved resturant
+
+
+
