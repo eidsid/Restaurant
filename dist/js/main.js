@@ -1793,20 +1793,163 @@ $(function() {
             return localStorage.getItem('language');
         }
     }
-    // set lange in start
-    const language = local_storage.get_lange();
-    const langUI = $('.language');
-    if (language === "AR") {
-        arbic_lang.transAll();
 
-    }
     // EVENT change langue when click
     $('.language').on('click', () => {
         let language = local_storage.get_lange();
         if (!language) {
             local_storage.set_lange("AR");
             arbic_lang.transAll();
+        } else {
+            local_storage.remove();
+            window.location.reload();
 
+        }
+    });
+
+
+
+
+    //stor transalte
+    function card(name, info, price, url, id) {
+        const content = `
+    <div class="card">
+        <div class="card-img">
+            <img src="${url}" alt="" />
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                ${name}
+                <span>$${price}</span>
+            </h5>
+            <p class="more_info">${info} </p>
+                    <button class="btn btn-primary" id=" ${id}">add to cart</button>
+        </div>
+    </div>
+`;
+        let div = document.createElement('div');
+        let clas = ['col-lg-4', 'col-md-6', 'col-sm-6', 'col-xs-6', 'col-xxs-auto'];
+        clas.forEach(classs => {
+            div.classList.add(classs);
+        })
+        let cards = document.querySelector('.cards');
+        div.innerHTML = content;
+        cards.append(div);
+
+    }
+    let english_products = [{
+            name: "Goat meat",
+            info: "fransh Goat meat",
+            price: 30,
+            url: "../assts/images/dashes/1.jpg",
+            id: 1
+        },
+
+        {
+            name: "Goat  salad",
+            info: "fransh Goat  salad",
+            price: 12,
+            url: "../assts/images/dashes/3.jpg",
+            id: 2
+
+        },
+        {
+            name: "Goat cheese",
+            info: "fransh Goat cheese",
+            price: 12,
+            url: "../assts/images/dashes/4.jpg",
+            id: 3
+
+        },
+
+        {
+            name: "sweet plate",
+            info: "fransh sweet plate",
+            price: 7,
+            url: "../assts/images/dashes/5.jpg",
+            id: 4
+
+        },
+        {
+            name: "sweet plate",
+            info: "fransh sweet plate",
+            price: 10,
+            url: "../assts/images/dashes/6.jpg",
+            id: 5
+
+        },
+        {
+            name: "sweet plate",
+            info: "fransh sweet plate",
+            price: 15,
+            url: "../assts/images/dashes/7.jpg",
+            id: 6
+
+        },
+
+    ];
+    let arb_products = [{
+            name: "لحم الماعز",
+            info: "لحم الماعز الفرنسي",
+            price: 30,
+            url: "../assts/images/dashes/1.jpg",
+            id: 1
+        },
+
+        {
+            name: "سلطة الماعز",
+            info: "سلطة الماعز الفرنسية",
+            price: 12,
+            url: "../assts/images/dashes/3.jpg",
+            id: 2
+        },
+        {
+            name: " جبن الماعز",
+            info: "جبن الماعز الفرنسي",
+            price: 12,
+            url: "../assts/images/dashes/4.jpg",
+            id: 3
+        },
+        {
+            name: " طبق حلو",
+            info: "طبق حلو فرنسي",
+            price: 7,
+            url: "../assts/images/dashes/5.jpg",
+            id: 4
+        }, {
+            name: " طبق حلو",
+            info: "طبق حلو فرنسي",
+            price: 10,
+            url: "../assts/images/dashes/6.jpg",
+            id: 5
+        }, {
+            name: " طبق حلو",
+            info: "طبق حلو فرنسي",
+            price: 15,
+            url: "../assts/images/dashes/7.jpg",
+            id: 6
+        }
+    ];
+
+    function trans_store(language) {
+        if (language) {
+            arb_products.forEach(product => {
+                card(product.name, product.info, product.price, product.url, product.id);
+            })
+
+        } else {
+            english_products.forEach(product => {
+                card(product.name, product.info, product.price, product.url, product.id);
+            })
+        }
+    }
+    // EVENT change store langue when click
+    $('.language-product').on('click', () => {
+        console.log('stor click');
+        let language = local_storage.get_lange();
+        if (!language) {
+            local_storage.set_lange("AR");
+            window.location.reload();
 
         } else {
             local_storage.remove();
@@ -1814,6 +1957,21 @@ $(function() {
 
         }
     });
+    // set lange in start
+    const language = local_storage.get_lange();
+    const langUI = $('.language');
+    if (language) {
+        arbic_lang.transAll();
+        trans_store(language);
+        $('.language-product').text('EN');
+
+    } else {
+        trans_store('');
+
+
+    }
+
+
 });
 var ScrollOut = (function() {
     'use strict';
@@ -2135,74 +2293,8 @@ $(function() {
         aboutimgs.attr("src", images[num]);
     })
 })
-function card(name, info, price, url) {
-    const content = `
-    <div class="card">
-        <div class="card-img">
-            <img src="${url}" alt="" />
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">
-                ${name}
-                <span>${price}</span>
-            </h5>
-            <p class="more_info">${info}</p>
-                    <button class="btn btn-primary">add to cart</button>
-        </div>
-    </div>
-`;
-    let div = document.createElement('div');
-    let clas = ['col-lg-4', 'col-md-6', 'col-sm-6', 'col-xs-6', 'col-xxs-auto'];
-    clas.forEach(classs => {
-        div.classList.add(classs);
+$(function() {
+    $('.card .btn').on('click', (e) => {
+        console.log($(e.target).id);
     })
-    let cards = document.querySelector('.cards');
-    div.innerHTML = content;
-    cards.append(div);
-
-}
-
-
-let products = [{
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/1.jpg"
-    },
-
-    {
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/3.jpg"
-    },
-    {
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/4.jpg"
-    },
-    {
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/5.jpg"
-    },
-    {
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/6.jpg"
-    },
-    {
-        name: "got meet",
-        info: "frinsh got meet",
-        price: 12,
-        url: "../assts/images/dashes/7.jpg"
-    },
-
-];
-
-products.forEach(product => {
-    card(product.name, product.info, product.price, product.url);
 })

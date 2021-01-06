@@ -1,5 +1,5 @@
 .nave-toggle
-   h4.language AR  
+   h4(class= page_title==='storePage' ? 'language-product ' : 'language') AR
    i.toggle-button.fa.fa-bars
 .nav-bar     
 
@@ -13,7 +13,7 @@
      li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="gallery") Gallery
      li( class= page_title==='storePage' ? 'hide' : ''): a.store(href="./store.html") Order Online 
      li( class= page_title==='storePage' ? 'hide' : ''): a(href="#",data-scroll="contact") Contact
-     h3.language AR  
+     h3(class= page_title==='storePage' ? 'language-product ' : 'language') AR
   ul.row.socail
       li.col: i.fa.fa-facebook
       li.col: i.fa.fa-instagram
