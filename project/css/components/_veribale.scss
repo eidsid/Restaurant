@@ -4,6 +4,12 @@ $mobile_width:750px;
     transition: all $value ease-in-out;
 }
 
+@mixin flex {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin button {
     padding: 10px 20px;
     border-radius: 15px;
