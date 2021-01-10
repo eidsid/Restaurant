@@ -37,19 +37,10 @@
                     &.count {
                         @include flex;
                         width: 100px;
-                        background-color: rgb(7, 73, 7);
+                        background-color: rgb(149, 151, 149);
                         input {
                             text-align: center;
                             width: 60px;
-                        }
-                        i {
-                            margin: 0 2px;
-                            @include Stransation(.7s);
-                            color: rgb(255, 255, 255);
-                            &:hover {
-                                color: rgb(97, 95, 95);
-                                cursor: pointer;
-                            }
                         }
                     }
                 }

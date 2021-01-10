@@ -1671,26 +1671,23 @@ $(function() {
 // Store Class: Handles Storage
 class local_storage {
     static set_lange(lang) {
-        localStorage.setItem('language', lang);
-
+        localStorage.setItem("language", lang);
     }
     static remove() {
-        localStorage.removeItem('language');
-
+        localStorage.removeItem("language");
     }
     static get_lange() {
-        return localStorage.getItem('language');
+        return localStorage.getItem("language");
     }
-
 
     //for purshes item
     //get purshes item
     static getitems() {
-        let item = JSON.parse(localStorage.getItem('items'));
+        let item = JSON.parse(localStorage.getItem("items"));
         if (item) {
             return item;
         } else {
-            return item = [];
+            return (item = []);
         }
     }
 
@@ -1698,28 +1695,38 @@ class local_storage {
     static additem(purshes_item) {
         let items = local_storage.getitems();
         items.push(purshes_item);
-        localStorage.setItem('items', JSON.stringify(items));
+        localStorage.setItem("items", JSON.stringify(items));
     }
 
     //remove item from local storage
     static removeitem(id) {
-        let items = local_storage.getitems();
-        items.forEach((item, index) => {
-            if (item === id) {
-                item.splice(index, 1);
-            }
-        })
-        local_storage.additem(items);
-    }
+            let items = local_storage.getitems();
+            items.forEach((item, index) => {
+                if (item.id === id) {
+                    items.splice(index, 1);
+                }
+            });
+            localStorage.setItem("items", JSON.stringify(items));
+        }
+        //edit item from local storage
+    static edititem(id, count) {
+            let items = local_storage.getitems();
+            items.forEach((item) => {
+                if (item.id === id) {
+                    item.count = count;
+                }
+            });
+            localStorage.setItem("items", JSON.stringify(items));
+        }
+        //get id
     static get_id() {
         let ids = [];
         let items = local_storage.getitems();
-        items.forEach(item => {
+        items.forEach((item) => {
             ids.push(item.id);
-        })
+        });
         return ids;
     }
-
 }
 class arbic_lang {
 
@@ -1942,16 +1949,14 @@ let arb_products = [{
     }
 ];
 // EVENT change store langue when click
-$('.language-product').on('click', () => {
+$(".language-product").on("click", () => {
     let language = local_storage.get_lange();
     if (!language) {
         local_storage.set_lange("AR");
         window.location.reload();
-
     } else {
         local_storage.remove();
         window.location.reload();
-
     }
 });
 
@@ -1967,43 +1972,40 @@ function card(name, info, price, url, id) {
         </div>
     </div>
 `;
-    let div = document.createElement('div');
-    let clas = ['col-lg-4', 'col-md-6', 'col-sm-6', 'col-xs-6', 'col-xxs-auto'];
-    clas.forEach(classs => {
+    let div = document.createElement("div");
+    let clas = ["col-lg-4", "col-md-6", "col-sm-6", "col-xs-6", "col-xxs-auto"];
+    clas.forEach((classs) => {
         div.classList.add(classs);
-    })
-    let cards = document.querySelector('.store-content .main .cards');
+    });
+    let cards = document.querySelector(".store-content .main .cards");
     div.innerHTML = content;
     if (cards) {
         cards.append(div);
     }
-
 }
 
 function trans_store(language) {
     if (language) {
-        arb_products.forEach(product => {
+        arb_products.forEach((product) => {
             card(product.name, product.info, product.price, product.url, product.id);
-        })
-
+        });
     } else {
-        english_products.forEach(product => {
+        english_products.forEach((product) => {
             card(product.name, product.info, product.price, product.url, product.id);
-        })
+        });
     }
 }
 
 // set lange in start
 const language = local_storage.get_lange();
-const langUI = $('.language');
+const langUI = $(".language");
 if (language) {
     arbic_lang.transAll();
     trans_store(language);
-    $('.language-product').text('EN');
-    $('.card .card-body .btn').text('اضف الي السلة');
-
+    $(".language-product").text("EN");
+    $(".card .card-body .btn").text("اضف الي السلة");
 } else {
-    trans_store('');
+    trans_store("");
 }
 
 class Broduct {
@@ -2016,45 +2018,50 @@ class Broduct {
         this.name = name;
         this.price = price * 1;
         this.count = count;
-        this.id = id;
-        this.allprice = price * count;
+        this.id = id * 1;
         this.imgurl = imgurl;
-
     }
 }
 // button  stat shange
 function purchased() {
     let ids = local_storage.get_id();
-    let btns = document.querySelectorAll('.card .btn');
-    btns.forEach(btn => {
-        ids.forEach(id => {
-            if (id === btn.id) {
+    let btns = document.querySelectorAll(".card .btn");
+    btns.forEach((btn) => {
+        ids.forEach((id) => {
+            if (id === Number(btn.id)) {
                 if (language) {
                     btn.innerHTML = "تم شرائة";
-                } else { btn.innerHTML = "purchased"; }
-
+                } else {
+                    btn.innerHTML = "purchased";
+                }
                 btn.style.backgroundColor = "green";
             }
         });
-    })
+    });
 }
-document.addEventListener('DOMContentLoaded', purchased());
+document.addEventListener("DOMContentLoaded", purchased());
 // buy event
-$('.card .btn').on('click', (e) => {
-    let prod_id = $(e.target).attr('id');
-    let imgurl = e.target.parentElement.previousElementSibling.getAttribute('src');
-    let name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-    let price = e.target.previousElementSibling.previousElementSibling.textContent;
-    let product = new Broduct(name, price, 1, prod_id, imgurl); // add items
+$(".card .btn").on("click", (e) => {
+    let prod_id = $(e.target).attr("id");
+    let imgurl = e.target.parentElement.previousElementSibling.getAttribute(
+        "src"
+    );
+    let name =
+        e.target.previousElementSibling.previousElementSibling
+        .previousElementSibling.textContent;
+    let price =
+        e.target.previousElementSibling.previousElementSibling.textContent;
+    let product = new Broduct(name, price, 1, prod_id, imgurl);
+    // add items
     let ids = local_storage.get_id();
     let element_is_exist = false;
-    ids.forEach(id => {
-        if (id === prod_id) {
+    ids.forEach((id) => {
+        if (id === Number(prod_id)) {
             element_is_exist = true;
         }
     });
     if (element_is_exist) {
-        window.open('./cart.html', '_blank');
+        window.open("./cart.html");
     } else {
         if (language) {
             $(e.target).text("تم شرائة");
@@ -2063,43 +2070,95 @@ $('.card .btn').on('click', (e) => {
         }
         $(e.target).css("backgroundColor", "green");
         local_storage.additem(product);
-
     }
-})
-let cart_items = document.querySelector('.cart .cart_container .shopping_card .items');
+});
+ let cart_items = document.querySelector(
+     ".cart .cart_container .shopping_card .items");
 
-function createItem(allprice, name, count, id, imgurl) {
 
-    const contentcard = `
+ class cartUI {
+
+     static cart_model(price, name, count, id, imgurl) {
+
+         const contentcard = `
 <ul class="item" id="${id}"}>
   <li><img class="rounded-circle" src="${imgurl}" alt=""/></li>
   <li>
     <h5>${name}</h5>
   </li>
-  <li class="count"><i class="fa fa-arrow-down down"></i>
-    <input class="item-count" type="text" value="${count}"/><i class="fa fa-arrow-up up"></i>
+  <li class="count">
+    <input class="item-count" type="number" min="0" value="${count}" id="count"/>
   </li>
   <li>
-    <p class="price">$ ${allprice}</p>
+    <p class="price">$ ${price}</p>
   </li>
-  <li><i class="fa fa-close delete"></i></li>
+  <li><i class="fa fa-close delete" id="delete"></i></li>
 </ul>`;
-    let div = document.createElement('div');
-    div.innerHTML = contentcard;
-    if (cart_items) {
-        cart_items.append(div);
-    }
+         let card_container = document.createElement("div");
+         card_container.innerHTML = contentcard;
+         if (cart_items) {
+             cart_items.append(card_container);
+         }
+     }
 
-}
-let items = local_storage.getitems();
-items.forEach(item => {
-createItem(item.allprice, item.name, item.count,
-    item.id, item.imgurl);
-console.log(item.allprice, item.name, item.count,
-    item.id, item.imgurl);
-});
+     static creatUI() {
+         let items = local_storage.getitems();
 
-});
+         items.forEach((item) => {
+             cartUI.cart_model(item.price, item.name, item.count, item.id, item.imgurl);
+         });
+     }
+     static getallprice() {
+         let items = local_storage.getitems();
+         let total = 0;
+         items.forEach(item => {
+             total += item.count * item.price;
+         })
+         $('.allcust').text("$" + total)
+     }
+     static onstart() {
+         cartUI.creatUI();
+         cartUI.getallprice();
+     }
+
+
+ }
+ // creat ui in start
+ document.addEventListener("DOMContentLoaded", cartUI.onstart());
+ // add event on cart
+ let selectitems = document.querySelectorAll(".cart .cart_container .shopping_card .items .item");
+ selectitems.forEach(item => {
+ item.addEventListener('click', (e) => {
+
+     let id = Number(e.target.parentElement.parentElement.id);
+     if (e.target.id === "delete") {
+         e.target.parentElement.parentElement.remove();
+         local_storage.removeitem(id);
+         cartUI.getallprice();
+     }
+     if (e.target.id === "count") {
+         let value = Number(e.target.value);
+         local_storage.edititem(id, value);
+         cartUI.getallprice();
+
+     }
+
+ })
+ })
+
+
+
+
+
+
+
+
+
+
+
+
+
+ });
 var ScrollOut = (function() {
     'use strict';
 
