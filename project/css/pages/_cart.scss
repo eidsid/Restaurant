@@ -4,6 +4,12 @@
         width: 100%;
         min-height: 100vh;
         padding-top: 5%;
+        @include Stransation(1s);
+        // opacity: 0;
+    }
+    
+    .cart[data-scroll="in"] {
+        opacity: 1;
     }
     
     .cart_container {
@@ -11,7 +17,7 @@
         box-shadow: 0px 0px 10px 10px #525261;
         background-color: #e5e8ed;
         z-index: 1;
-        width: 80% !important;
+        width: 85% !important;
         margin: $center;
         color: #282829;
         width: 100%;
@@ -19,7 +25,7 @@
         flex-direction: row;
         .shopping_card {
             padding: 5%;
-            width: 70%;
+            flex: 1.8 !important;
             .title {
                 margin: 7% 0;
             }
@@ -76,6 +82,7 @@
             }
         }
         .card_details {
+            flex: 1.35;
             background-color: #a1b3c1;
             padding: 10% 0;
             width: 100%;
@@ -113,16 +120,25 @@
             }
             .user_card {
                 width: 100%;
+                h3 {
+                    color: rgb(10, 72, 92);
+                    text-align: center;
+                    margin: 20px 0;
+                    font-weight: bold;
+                }
                 .numbers,
                 .date,
                 .name {
+                    overflow: hidden;
+                    font-size: 0.8rem;
+                    background-color: rgb(3, 67, 89);
                     width: 80%;
-                    border: 2px solid rgba(10, 47, 87, 0.977);
-                    padding: 2%;
+                    padding: 4%;
+                    border-radius: 15px;
                     margin: $center;
-                    height: 80px;
+                    height: 95px;
                     margin-top: 20px;
-                    color: rgba(10, 47, 87, 0.977);
+                    color: rgba(255, 255, 255, 0.977);
                     p {
                         font-size: 1rem;
                     }
@@ -131,13 +147,17 @@
                         display: flex;
                         input {
                             border: none;
+                            border-bottom: 2px solid rgba(7, 28, 58, 0.699);
                             background: none !important;
                             text-align: center;
                             margin-right: 5px;
                             width: 60px;
-                            color: rgba(10, 47, 87, 0.977);
+                            padding-bottom: 5px;
+                            color: rgba(255, 255, 255, 0.977);
+                            @include Stransation(0.6s);
                             &:focus {
                                 outline: none;
+                                border-bottom: 2px solid lightblue;
                             }
                         }
                     }
@@ -154,6 +174,7 @@
                     @include Stransation(0.4s);
                     &:hover {
                         transform: scale(1.1);
+                        cursor: pointer;
                     }
                 }
             }

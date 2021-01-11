@@ -54,8 +54,7 @@
  // add event on cart
  let selectitems = document.querySelectorAll(".cart .cart_container .shopping_card .items .item");
  selectitems.forEach(item => {
- item.addEventListener('click', (e) => {
-
+ item.addEventListener('input', (e) => {
      let id = Number(e.target.parentElement.parentElement.id);
      if (e.target.id === "delete") {
          e.target.parentElement.parentElement.remove();
@@ -71,10 +70,6 @@
 
  })
  })
-
-
-
-
 
 
 
