@@ -3,15 +3,12 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     prfix = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
-    pug = require('gulp-pug'),
-    uglify = require('gulp-uglify'),
-    sourcemaps = require('gulp-sourcemaps');
-
-//html task
+    pug = require('gulp-pug')
+    //html task
 gulp.task('html', () => {
         //call fills
         return gulp.src('./project/html/*.pug')
-            .pipe(pug({ pretty: true }))
+            .pipe(pug())
             .pipe(gulp.dest('dist/html'))
     })
     // css task
@@ -27,7 +24,6 @@ gulp.task('css', () => {
             // concat scss to main css
             .pipe(concat('main.css'))
             //make source map
-            .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest('dist/style'))
     })
     // js task
